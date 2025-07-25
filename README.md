@@ -1,2 +1,2 @@
-# photo-spaceman
+# mcc-png
 Photo Repository for Website
