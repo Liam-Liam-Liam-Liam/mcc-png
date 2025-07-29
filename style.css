@@ -1,14 +1,13 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   margin: 0;
-  background: #000000;
+  background: linear-gradient(black, rgb(39, 39, 39),black);
   color: #ffffff;
 }
 
 header {
   text-align: center;
-  padding: 2rem;
-  background: #000;
+  padding: 2rem; 
 }
 
 #gallery {
@@ -22,3 +21,4 @@ header {
   width height: auto;
   border-radius: 8px;
 }
+
