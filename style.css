@@ -7,11 +7,11 @@ body {
 
 header {
   text-align: center;
-  padding: 2rem; 
+  padding: 0; 
 }
 main {
   text-align: center;
-  padding: 2rem; 
+  padding: 0rem; 
 }
 
 footer {
@@ -41,7 +41,7 @@ footer {
   border-radius: 5px;
   margin: 5px;
   display: inline-block;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.01s, color 0.01s;
 }
 
 .nav-button:hover {
@@ -68,7 +68,7 @@ footer {
   border: 2px solid white;
   border-radius: 5px;
   background-color: transparent;
-  transition: background-color 0.6s, border-color 0.6s;
+  transition: background-color 0.01s, border-color 0.01s;
 }
 
 
@@ -79,7 +79,7 @@ footer {
   height: 24px;
   display: block;
   content: url("assets/Images/home-icon.jpg");
-  transition: content 0.6s ease-in-out;
+  transition: content 10s ease-in-out;
 }
 
 
@@ -88,7 +88,7 @@ footer {
   width: 100%;
   height: auto;
   content: url("assets/Images/home-icon.jpg"); /* default image */
-  transition: 0.6s ease-in-out;
+  transition: 10s ease-in-out;
 }
 
 
@@ -99,4 +99,19 @@ footer {
 
 .home-button:hover .icon-img {
   content: url("assets/Images/home-icon-hover.jpg");
+}
+
+#featured-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+#featured-image img {
+  max-width: 1000px; /* Set a fixed max width */
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
