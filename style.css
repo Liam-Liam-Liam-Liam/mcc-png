@@ -1,11 +1,20 @@
 body {
   font-family: 'Times New Roman', Times, serif;
   margin: 0;
-  background: linear-gradient(black, rgb(39, 39, 39),black);
+  background: linear-gradient(black, rgb(92, 0, 0), black);
   color: #ffffff;
 }
 
 header {
+  text-align: center;
+  padding: 2rem; 
+}
+main {
+  text-align: center;
+  padding: 2rem; 
+}
+
+footer {
   text-align: center;
   padding: 2rem; 
 }
@@ -22,3 +31,72 @@ header {
   border-radius: 8px;
 }
 
+/* Style for navigation buttons */
+.nav-button {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 5px;
+  margin: 5px;
+  display: inline-block;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: white;
+  color: black;
+}
+
+#nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  position: relative;
+}
+
+
+
+/* Home button inherits nav-button styles */
+.home-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: transparent;
+  transition: background-color 0.6s, border-color 0.6s;
+}
+
+
+
+/* Icon inside the button */
+.home-button .icon-img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  content: url("assets/Images/home-icon.jpg");
+  transition: content 0.6s ease-in-out;
+}
+
+
+
+.icon-img {
+  width: 100%;
+  height: auto;
+  content: url("assets/Images/home-icon.jpg"); /* default image */
+  transition: 0.6s ease-in-out;
+}
+
+
+/* Hover effect */
+.home-button:hover {
+  background-color: white;
+}
+
+.home-button:hover .icon-img {
+  content: url("assets/Images/home-icon-hover.jpg");
+}
