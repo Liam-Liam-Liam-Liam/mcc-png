@@ -4,22 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mcc.png</title>
+  <title>Contact - mcc.png</title>
   <link rel="stylesheet" href="style.css" />
-
-
 </head>
 
 <body>
-
   <header>
     <div id="header">
-
       <a href="index.html" class="nav-button home-button" title="Home">
         <img src="assets/Images/home-icon.jpg" alt="Home Icon" class="icon-img">
       </a>
-
-
       <h1>mcc.png</h1>
       <h2>Photos you can look at with your eyeballs</h2>
     </div>
@@ -28,33 +22,37 @@
       <a href="gallery.html" class="nav-button">Gallery</a>
       <a href="about.html" class="nav-button">About</a>
       <a href="contact.html" class="nav-button">Contact</a>
-
-
-
     </nav>
   </header>
 
   <main>
-    <section id="intro">
-      <br>
-      <p>Photography by Liam McColgan</p>
-      <p>@mcc.png on Instagram</p>
+    <section id="contact">
+      <h2>Get in touch</h2>
+
+
+
+
+      <form action="mailto:liammccolgan02@gmail.com" method="POST" enctype="text/plain">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+        <input type="submit" value="Send">
+        <input type="reset" value="Clear">
+      </form>
+
 
     </section>
-
-<section id="featured-image">
-  <img class="fade-img" src="assets/Images/photo1.jpg" alt="Photo 1">
-  <img class="fade-img" src="assets/Images/photo2.jpg" alt="Photo 2">
-  <img class="fade-img" src="assets/Images/photo3.jpg" alt="Photo 3">
-</section>
-
   </main>
 
   <footer>
     <p>&copy; mcc.png</p>
   </footer>
-
-  <script src="scripts.js"></script>
 </body>
 
 </html>
