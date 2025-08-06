@@ -43,10 +43,18 @@
     </section>
 
 <section id="featured-image">
-  <img class="fade-img" src="assets/Images/photo1.jpg" alt="Photo 1">
-  <img class="fade-img" src="assets/Images/photo2.jpg" alt="Photo 2">
-  <img class="fade-img" src="assets/Images/photo3.jpg" alt="Photo 3">
+  <div class="image-stack">
+    <img src="assets/Images/photo1.jpg" alt="Photo 1" class="stack-img">
+    <img src="assets/Images/photo2.jpg" alt="Photo 2" class="stack-img">
+    <img src="assets/Images/photo3.jpg" alt="Photo 3" class="stack-img">
+  </div>
 </section>
+
+<!-- Modal for full-size preview -->
+<div id="image-modal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modal-img">
+</div>
 
   </main>
 

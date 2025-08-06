@@ -7,16 +7,17 @@ body {
 
 header {
   text-align: center;
-  padding: 0; 
+  padding: 0;
 }
+
 main {
   text-align: center;
-  padding: 0rem; 
+  padding: 0rem;
 }
 
 footer {
   text-align: center;
-  padding: 2rem; 
+  padding: 2rem;
 }
 
 #gallery {
@@ -26,7 +27,8 @@ footer {
   padding: 2rem;
 }
 
-#gallery img, #gallery video {
+#gallery img,
+#gallery video {
   width height: auto;
   border-radius: 8px;
 }
@@ -82,12 +84,76 @@ footer {
   transition: content 10s ease-in-out;
 }
 
+.image-stack {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: -30px;
+  padding: 2rem;
+  overflow-x: auto;
+  position: relative;
+}
+
+.stack-img {
+  width: 150px; /* Smaller size */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, z-index 0.3s ease;
+  margin-left: -30px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.stack-img:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.stack-img:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
 
 
 .icon-img {
   width: 100%;
   height: auto;
-  content: url("assets/Images/home-icon.jpg"); /* default image */
+  content: url("assets/Images/home-icon.jpg");
+  /* default image */
   transition: 10s ease-in-out;
 }
 
@@ -117,15 +183,20 @@ footer {
   position: relative;
   height: auto;
   display: flex;
+  justify-content: center;
+  align-items: auto;
+  margin: 2rem 0;
 }
 
 #featured-image img {
-  max-width: 1000px; /* Set a fixed max width */
+  max-width: 1000px;
+  /* Set a fixed max width */
   width: 100%;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
+
 #contact {
   text-align: center;
   padding: 2rem;
