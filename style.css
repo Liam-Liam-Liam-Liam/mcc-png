@@ -1,40 +1,36 @@
-/* ================================
-   mcc.png — Clean CSS Reset + Theme
-   ================================ */
+/* =========================================
+              mcc.png CSS file
+   ========================================= */
 
-/* Box sizing + sensible defaults */
+/* --- global reset-ish vibes --- */
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
 
 :root {
-  /* Colors */
+  /* colors */
   --bg-1: #000000;
   --bg-2: rgb(46, 46, 46);
   --text: #ffffff;
   --text-dim: rgba(255, 255, 255, 0.823);
   --ink: #111111;
 
-  /* UI */
+  /* ui bits */
   --radius: 12px;
   --radius-sm: 8px;
   --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.35);
 
-  /* Sizing */
+  /* layout */
   --content-max: 1100px;
 
-  /* Motion */
+  /* motion (keep it tasteful) */
   --ease: cubic-bezier(.2, .6, .2, 1);
   --t-fast: 120ms;
   --t-med: 240ms;
 }
 
-html, body {
-  height: 100%;
-}
+html, body { height: 100%; }
 
 body {
   margin: 0;
@@ -45,14 +41,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Make media responsive by default */
+/* media should just behave */
 img, video, canvas, svg {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-/* Links and buttons — consistent focus */
+/* accessible, no weird outlines */
 a, button {
   color: inherit;
   text-decoration: none;
@@ -64,14 +60,11 @@ button:focus-visible {
   border-radius: var(--radius-sm);
 }
 
-/* ================================
-   Page Layout
-   ================================ */
+/* =========================================
+   header + nav
+   ========================================= */
 
-header {
-  text-align: center;
-  padding: 0;
-}
+header { text-align: center; padding: 0; }
 
 #header {
   max-width: var(--content-max);
@@ -92,6 +85,7 @@ header {
   font-size: clamp(1rem, 2vw, 1.25rem);
 }
 
+/* nav row with relaxed spacing */
 #nav-buttons {
   display: flex;
   justify-content: center;
@@ -109,10 +103,11 @@ header {
   border: 1px solid rgba(255,255,255,0.25);
   background-color: transparent;
   color: var(--text);
-  transition: background-color var(--t-fast) var(--ease),
-              color var(--t-fast) var(--ease),
-              border-color var(--t-fast) var(--ease),
-              transform var(--t-fast) var(--ease);
+  transition:
+    background-color var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease),
+    transform var(--t-fast) var(--ease);
   will-change: transform;
 }
 .nav-button:hover {
@@ -120,27 +115,49 @@ header {
   border-color: rgba(255,255,255,0.45);
   transform: translateY(-1px);
 }
-.nav-button:active {
-  transform: translateY(0);
-}
+.nav-button:active { transform: translateY(0); }
 
-/* Home button with img inside (no CSS content hacks) */
-.home-button .icon-img {
+/* home icon = pure CSS (no <img> needed) */
+.home-button{
   width: 36px;
   height: 36px;
+  display: inline-block;
   border-radius: 50%;
-  object-fit: cover;
+  background: center/cover no-repeat url("assets/Images/home-icon.jpg");
   box-shadow: var(--shadow-sm);
 }
-.home-button:hover .icon-img {
-  filter: brightness(1.1) contrast(1.05);
+@media (hover: hover) {
+  .home-button:hover{
+    background-image: url("assets/Images/home-icon-hover.jpg");
+    filter: brightness(1.08) contrast(1.03);
+  }
+}
+.home-button:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.55);
 }
 
-/* Main & Footer */
-main {
-  text-align: center;
-  padding: 0;
+/* (optional) retina sources if you’ve got them */
+.home-button{
+  background-image: image-set(
+    url("assets/Images/home-icon.jpg") 1x,
+    url("assets/Images/home-icon@2x.jpg") 2x
+  );
 }
+@media (hover: hover) {
+  .home-button:hover{
+    background-image: image-set(
+      url("assets/Images/home-icon-hover.jpg") 1x,
+      url("assets/Images/home-icon-hover@2x.jpg") 2x
+    );
+  }
+}
+
+/* =========================================
+   main + footer wrappers
+   ========================================= */
+
+main { text-align: center; padding: 0; }
 
 footer {
   text-align: center;
@@ -149,27 +166,20 @@ footer {
   font-size: 0.95rem;
 }
 
-/* Constrain main sections */
+/* sections stay centered & comfy */
 section {
   max-width: var(--content-max);
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-/* ================================
-   Featured Rotator
-   Assumes:
-   <div class="rotator" id="rotator">
-     <img class="rotator-img active">
-     ...
-     <button class="rotor-btn prev">‹</button>
-     <button class="rotor-btn next">›</button>
-   </div>
-   ================================ */
+/* =========================================
+   featured (single rotating hero)
+   - JS swaps the src every 5s
+   - container keeps a consistent 16:9
+   ========================================= */
 
-#featured-image {
-  padding: 1.5rem 1rem 0.5rem;
-}
+#featured-image { padding: 1.5rem 1rem 0.5rem; }
 
 .rotator {
   position: relative;
@@ -182,6 +192,7 @@ section {
   background: rgba(255,255,255,0.04);
 }
 
+/* we keep .active so first paint is visible */
 .rotator-img {
   position: absolute;
   inset: 0;
@@ -193,40 +204,17 @@ section {
   transition: opacity 600ms var(--ease), transform 1200ms var(--ease);
   will-change: opacity, transform;
 }
-
-/* Visible slide */
 .rotator-img.active {
   opacity: 1;
   transform: scale(1);
 }
 
-/* Controls */
-.rotor-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: 1px solid rgba(255,255,255,0.6);
-  background: rgba(0,0,0,0.35);
-  color: white;
-  font-size: clamp(18px, 3vw, 28px);
-  line-height: 1;
-  padding: .4rem .7rem;
-  border-radius: 999px;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
-}
-.rotor-btn:hover { background: rgba(255,255,255,0.9); color: black; transform: translateY(-50%) scale(1.03); }
-.rotor-btn:active { transform: translateY(-50%) scale(0.98); }
-.rotor-btn.prev { left: 8px; }
-.rotor-btn.next { right: 8px; }
-
-/* Pause hint (optional subtle zoom when hovered) */
+/* a tiny hover nudge so it feels alive */
 .rotator:hover .rotator-img.active { transform: scale(1.01); }
 
-/* ================================
-   Gallery Grid
-   ================================ */
+/* =========================================
+   gallery grid (used on /gallery)
+   ========================================= */
 
 #gallery {
   display: grid;
@@ -238,14 +226,16 @@ section {
 
 #gallery img,
 #gallery video {
-  width: 100%;   /* fixed: was 'width height: auto;' */
+  width: 100%;
   height: auto;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
-  transition: transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease), filter var(--t-med) var(--ease);
+  transition:
+    transform var(--t-med) var(--ease),
+    box-shadow var(--t-med) var(--ease),
+    filter var(--t-med) var(--ease);
   cursor: zoom-in;
 }
-
 #gallery img:hover,
 #gallery video:hover {
   transform: translateY(-2px) scale(1.02);
@@ -253,40 +243,12 @@ section {
   filter: saturate(1.05) contrast(1.03);
 }
 
-/* If you use a stacked-image strip somewhere */
-.stack-img {
-  display: block;
-  border-radius: var(--radius-sm);
-  transition: transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease);
-  will-change: transform;
-}
-.stack-img:hover {
-  transform: scale(1.6);
-  box-shadow: var(--shadow-md);
-  z-index: 10;
-}
-
-/* Optional fade-in utility for images (paired with JS) */
-.fade-img {
-  opacity: 0;
-  transition: opacity 1s var(--ease);
-}
-.fade-img.is-visible,
-.fade-img[style*="opacity: 1"] {
-  opacity: 1;
-}
-
-/* ================================
-   Modal (Image Lightbox)
-   Assumes:
-   <div id="image-modal" class="modal">
-     <span class="close">&times;</span>
-     <img class="modal-content" id="modal-img">
-   </div>
-   ================================ */
+/* =========================================
+   modal (lightbox)
+   ========================================= */
 
 .modal {
-  display: none;           /* toggled to block via JS */
+  display: none;                 /* JS toggles this */
   position: fixed;
   inset: 0;
   z-index: 999;
@@ -320,9 +282,9 @@ section {
   background: #000;
 }
 
-/* ================================
-   Forms (Contact page friendly)
-   ================================ */
+/* =========================================
+   forms (contact page)
+   ========================================= */
 
 form {
   max-width: 720px;
@@ -347,7 +309,10 @@ textarea {
   border: 1px solid rgba(255,255,255,0.25);
   background: rgba(255,255,255,0.06);
   color: var(--text);
-  transition: border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+  transition:
+    border-color var(--t-fast) var(--ease),
+    background var(--t-fast) var(--ease),
+    box-shadow var(--t-fast) var(--ease);
 }
 textarea { min-height: 140px; resize: vertical; }
 
@@ -368,7 +333,10 @@ input[type="submit"] {
   background: rgba(255,255,255,0.06);
   color: var(--text);
   cursor: pointer;
-  transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+  transition:
+    background var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease),
+    transform var(--t-fast) var(--ease);
 }
 button:hover,
 input[type="submit"]:hover {
@@ -377,23 +345,16 @@ input[type="submit"]:hover {
   transform: translateY(-1px);
 }
 button:active,
-input[type="submit"]:active {
-  transform: translateY(0);
-}
+input[type="submit"]:active { transform: translateY(0); }
 
-/* ================================
-   Helpers
-   ================================ */
+/* =========================================
+   helpers
+   ========================================= */
 
-.container {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 0 1rem;
-}
+.container { max-width: var(--content-max); margin: 0 auto; padding: 0 1rem; }
 
 .hidden { display: none !important; }
 
-/* Screen-reader only utility */
 .sr-only {
   position: absolute !important;
   width: 1px; height: 1px;
@@ -402,9 +363,9 @@ input[type="submit"]:active {
   white-space: nowrap; border: 0;
 }
 
-/* ================================
-   Responsive tweaks
-   ================================ */
+/* =========================================
+   responsive tweaks
+   ========================================= */
 
 @media (max-width: 520px) {
   #nav-buttons { gap: 0.4rem; }
@@ -413,7 +374,7 @@ input[type="submit"]:active {
   .modal-content { margin-top: 3.25rem; }
 }
 
-/* Respect reduced motion */
+/* prefers-reduced-motion = chill out */
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
   .rotator-img { transform: none !important; }

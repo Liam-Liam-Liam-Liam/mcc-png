@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>mcc.png</title>
   <link rel="stylesheet" href="style.css" />
-
-
 </head>
-
 <body>
 
   <header>
     <div id="header">
-
-      <a href="index.html" class="nav-button home-button" title="Home">
-        <img src="assets/Images/home-icon.jpg" alt="Home Icon" class="icon-img">
+      <!-- Home button: pure CSS background-image swap -->
+      <a href="index.html" class="nav-button home-button" aria-label="Home">
+        <span class="sr-only">Home</span>
       </a>
-
 
       <h1>mcc.png</h1>
       <h2>Photos you can look at with your eyeballs</h2>
@@ -28,9 +23,6 @@
       <a href="gallery.html" class="nav-button">Gallery</a>
       <a href="about.html" class="nav-button">About</a>
       <a href="contact.html" class="nav-button">Contact</a>
-
-
-
     </nav>
   </header>
 
@@ -39,28 +31,24 @@
       <br>
       <p>Photography by Liam McColgan</p>
       <p>@mcc.png on Instagram</p>
+    </section> 
 
+    <section id="featured-image">
+      <div class="rotator" id="rotator" data-interval="5000" data-srcdir="assets/images/front_page/">
+        <img
+          src="assets/images/front_page/hero1.jpg"
+          alt="Featured image"
+          class="rotator-img active"
+          id="hero-img"
+          loading="eager"
+        >
+      </div>
+      
+      <div id="image-modal" class="modal" role="dialog" aria-modal="true" aria-label="Image preview">
+        <span class="close" aria-label="Close preview">&times;</span>
+        <img class="modal-content" id="modal-img" alt="">
+      </div>
     </section>
-    
-<section id="featured-image">
-  <div class="rotator" id="rotator">
-    <img src="assets/Images/photo1.jpg" alt="Photo 1" class="rotator-img active">
-    <img src="assets/Images/photo2.jpg" alt="Photo 2" class="rotator-img">
-    <img src="assets/Images/photo3.jpg" alt="Photo 3" class="rotator-img">
-
-    <!-- NEW: prev/next buttons -->
-    <button class="rotor-btn prev" aria-label="Previous slide">‹</button>
-    <button class="rotor-btn next" aria-label="Next slide">›</button>
-  </div>
-</section>
-
-
-<!-- Modal for full-size preview -->
-<div id="image-modal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modal-img">
-</div>
-
   </main>
 
   <footer>
@@ -69,5 +57,4 @@
 
   <script src="scripts.js"></script>
 </body>
-
 </html>
