@@ -2,41 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery - mcc.png</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery — mcc.png</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+
+  <!-- header + nav (same as index) -->
   <header>
     <div id="header">
-      <a href="index.html" class="nav-button home-button" title="Home">
-        <img src="assets/Images/home-icon.jpg" alt="Home Icon" class="icon-img">
-      </a>
-      <h1>mcc.png</h1>
-      <h2>Photos you can look at with your eyeballs</h2>
+      <h1>mcc.png</h1> 
     </div>
     <nav id="nav-buttons">
+      <a href="index.html" class="nav-button">Home</a>
       <a href="gallery.html" class="nav-button">Gallery</a>
       <a href="about.html" class="nav-button">About</a>
-      <a href="contact.html" class="nav-button">Contact</a>
     </nav>
   </header>
 
   <main>
-    <section id="gallery">
- 
-      <img loading="lazy" src="assets/Images/photo1.jpg" data-full="assets/Images/photo1.jpg" alt="Photo 1">
-      <img loading="lazy" src="assets/Images/photo2.jpg" data-full="assets/Images/photo2.jpg" alt="Photo 2">
-      <img loading="lazy" src="assets/Images/photo3.jpg" data-full="assets/Images/photo3.jpg" alt="Photo 3">
+
+    <section id="intro">
+    <br>
+    <p>Photography by Liam McColgan</p>
+    <p>@mcc.png on Instagram</p>
+  </section>
+    <section class="gallery-list" aria-label="Photo sets">
+
+      <!-- ============ GALLERY ITEM A (copy/paste to add more) ============ -->
+      <article class="gallery-item">
+        <div class="slideshow" data-interval="5000" aria-label="Set A cover">
+          <!-- use as many images as you want -->
+          <img src="assets/images/gallery/set-a/cover1.jpg" alt="Set A cover 1" class="active" width="1600" height="1067" loading="eager">
+          <img src="assets/images/gallery/set-a/cover2.jpg" alt="Set A cover 2" width="1600" height="1067" loading="lazy">
+          <img src="assets/images/gallery/set-a/cover3.jpg" alt="Set A cover 3" width="1600" height="1067" loading="lazy">
+        </div>
+
+        <div class="meta">
+          <h3>Working title</h3>
+          <p>desc.</p>
+        </div>
+      </article>
+
+      <!-- ============ GALLERY ITEM B ============ -->
+      <article class="gallery-item">
+        <div class="slideshow" data-interval="5000" aria-label="Set B cover">
+          <img src="assets/images/gallery/set-b/cover1.jpg" alt="Set B cover 1" class="active" width="1600" height="1067" loading="eager">
+          <img src="assets/images/gallery/set-b/cover2.jpg" alt="Set B cover 2" width="1600" height="1067" loading="lazy">
+          <img src="assets/images/gallery/set-b/cover3.jpg" alt="Set B cover 3" width="1600" height="1067" loading="lazy">
+        </div>
+
+        <div class="meta">
+          <h3>Working title</h3>
+          <p>desc.</p>
+        </div>
+      </article>
+
+      <!-- Add more <article class="gallery-item">…</article> blocks as needed -->
+
     </section>
- 
-    <div id="image-modal" class="modal">
-      <span class="close">&times;</span>
-      <img class="modal-content" id="modal-img" alt="">
-    </div>
   </main>
 
-  <footer><p>&copy; mcc.png</p></footer>
+  <!-- one global lightbox -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Full-size image">
+    <button class="lb-close" aria-label="Close (Esc)">&times;</button>
+    <img alt="">
+  </div>
+
+  <footer>
+    <p>&copy; mcc.png</p>
+  </footer>
+
   <script src="scripts.js"></script>
 </body>
 </html>
