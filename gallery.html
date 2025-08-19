@@ -1,78 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gallery — mcc.png</title>
-  <link rel="stylesheet" href="style.css"/>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+        crossorigin="anonymous">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Your custom styles -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- header + nav (same as index) -->
-  <header>
-    <div id="header">
-      <h1>mcc.png</h1> 
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark" style="background: transparent;">
+    <div class="container">
+      <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="index.html">
+        <i class="bi bi-camera"></i>
+        mcc.png
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMain" aria-controls="navbarsMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
     </div>
-    <nav id="nav-buttons">
-      <a href="index.html" class="nav-button">Home</a>
-      <a href="gallery.html" class="nav-button">Gallery</a>
-      <a href="about.html" class="nav-button">About</a>
-    </nav>
-  </header>
+  </nav>
 
   <main>
-
-    <section id="intro">
-    <br>
-    <p>Photography by Liam McColgan</p>
-    <p>@mcc.png on Instagram</p>
-  </section>
-    <section class="gallery-list" aria-label="Photo sets">
-
-      <!-- ============ GALLERY ITEM A (copy/paste to add more) ============ -->
-      <article class="gallery-item">
-        <div class="slideshow" data-interval="5000" aria-label="Set A cover">
-          <!-- use as many images as you want -->
-          <img src="assets/images/gallery/set-a/cover1.jpg" alt="Set A cover 1" class="active" width="1600" height="1067" loading="eager">
-          <img src="assets/images/gallery/set-a/cover2.jpg" alt="Set A cover 2" width="1600" height="1067" loading="lazy">
-          <img src="assets/images/gallery/set-a/cover3.jpg" alt="Set A cover 3" width="1600" height="1067" loading="lazy">
+    <!-- Album-style header -->
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h1 class="fw-light display-6">Album</h1>
+          <p class="lead text-white-50">
+            Sets and highlights. Click a card to view the full album.
+          </p>
         </div>
-
-        <div class="meta">
-          <h3>Working title</h3>
-          <p>desc.</p>
-        </div>
-      </article>
-
-      <!-- ============ GALLERY ITEM B ============ -->
-      <article class="gallery-item">
-        <div class="slideshow" data-interval="5000" aria-label="Set B cover">
-          <img src="assets/images/gallery/set-b/cover1.jpg" alt="Set B cover 1" class="active" width="1600" height="1067" loading="eager">
-          <img src="assets/images/gallery/set-b/cover2.jpg" alt="Set B cover 2" width="1600" height="1067" loading="lazy">
-          <img src="assets/images/gallery/set-b/cover3.jpg" alt="Set B cover 3" width="1600" height="1067" loading="lazy">
-        </div>
-
-        <div class="meta">
-          <h3>Working title</h3>
-          <p>desc.</p>
-        </div>
-      </article>
-
-      <!-- Add more <article class="gallery-item">…</article> blocks as needed -->
-
+      </div>
     </section>
+
+    <!-- Album grid -->
+    <div class="album py-5">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+          <!-- Card: Set A -->
+          <div class="col">
+            <div class="card shadow-sm bg-dark border-0">
+              <img src="assets/images/gallery/set-a/cover1.jpg" class="card-img-top" alt="Set A cover" width="1600" height="1067" loading="eager">
+              <div class="card-body">
+                <p class="card-text mb-3">Working title A — short description of the set.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="album-set-a.html" class="btn btn-sm btn-outline-secondary">View</a>
+                  </div>
+                  <small class="text-body-secondary">12 photos</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: Set B -->
+          <div class="col">
+            <div class="card shadow-sm bg-dark border-0">
+              <img src="assets/images/gallery/set-b/cover1.jpg" class="card-img-top" alt="Set B cover" width="1600" height="1067" loading="lazy">
+              <div class="card-body">
+                <p class="card-text mb-3">Working title B — short description of the set.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="album-set-b.html" class="btn btn-sm btn-outline-secondary">View</a>
+                  </div>
+                  <small class="text-body-secondary">18 photos</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: Set C -->
+          <div class="col">
+            <div class="card shadow-sm bg-dark border-0">
+              <img src="assets/images/gallery/set-c/cover1.jpg" class="card-img-top" alt="Set C cover" width="1600" height="1067" loading="lazy">
+              <div class="card-body">
+                <p class="card-text mb-3">Working title C — short description of the set.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="album-set-c.html" class="btn btn-sm btn-outline-secondary">View</a>
+                  </div>
+                  <small class="text-body-secondary">9 photos</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </main>
 
-  <!-- one global lightbox -->
+  <!-- Lightbox (optional) -->
   <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Full-size image">
     <button class="lb-close" aria-label="Close (Esc)">&times;</button>
     <img alt="">
   </div>
 
-  <footer>
-    <p>&copy; mcc.png</p>
+  <footer class="text-center text-white-50 py-5">
+    <div class="container">
+      <p class="mb-0">&copy; mcc.png</p>
+    </div>
   </footer>
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-Q4grqf5F4j4fVqkK3J8B44B0xgCIXFuvY8VY5dS6fT2m2R3k4cn3m5n0pHc1v1x0"
+          crossorigin="anonymous"></script>
+
+  <!-- Your scripts -->
   <script src="scripts.js"></script>
 </body>
 </html>

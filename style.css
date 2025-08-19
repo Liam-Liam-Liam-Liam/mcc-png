@@ -5,7 +5,7 @@
 
 :root{
   --bg-1:#000;
-  --bg-2:#720000;
+  --bg-2:#353535;
   --text:#fff;
   --text-dim:rgba(255,255,255,.82);
 
@@ -77,7 +77,7 @@ header{ text-align:center; }
   transition:background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
 }
 .nav-button:hover{
-  background:rgba(226, 0, 0, 0.575);
+  background:rgba(255, 255, 255, 0.575);
   border-color:rgba(255,255,255,.45);
   transform:translateY(-1px);
 }

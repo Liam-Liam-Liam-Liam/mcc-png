@@ -2,57 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mcc.png</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>mcc.png — Home</title>
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+        crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+  <!-- Your custom styles (kept from your project) -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header>
-    <div id="header">
+  <!-- Navbar (transparent over your gradient) -->
+  <nav class="navbar navbar-expand-md navbar-dark" style="background: transparent;">
+    <div class="container">
+      <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="index.html">
+  <i class="bi bi-camera"></i>
+      </a>
 
-      <h1>mcc.png</h1> 
+      <a class="navbar-brand fw-semibold" href="index.html">mcc.png</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMain" aria-controls="navbarsMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <nav id="nav-buttons">
-    
-      
-      <a href="index.html" class="nav-button">Home</a>
-    
-      
-      <a href="gallery.html" class="nav-button">Gallery</a>
+  <main>
+    <!-- Hero (like Bootstrap Album example’s header) -->
+    <section class="py-5 text-center">
+      <div class="container">
+        <h1 class="display-5">mcc.png</h1>
+        <p class="lead mb-3">Photography by Liam McColgan</p>
+        <p class="mb-0">@mcc.png on Instagram</p>
+      </div>
+    </section>
 
+    <!-- Featured slideshow (keeps your existing behavior/styles) -->
+    <section id="slideshow" class="slideshow" aria-label="Featured photos">
+      <img src="assets/images/front_page/photo1.jpg" alt="Featured photo 1" class="active" width="1600" height="1067" fetchpriority="high">
+      <img src="assets/images/front_page/photo2.jpg" alt="Featured photo 2" width="1600" height="1067">
+      <img src="assets/images/front_page/photo3.jpg" alt="Featured photo 3" width="1600" height="1067">
+    </section>
+  </main>
 
-      <a href="about.html" class="nav-button">About</a>
-    </nav>
-  </header>
+  <!-- Global lightbox (shared with gallery) -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Full-size image">
+    <button class="lb-close" aria-label="Close (Esc)">&times;</button>
+    <img alt="">
+  </div>
 
-<main>
-  <section id="intro">
-    <br>
-    <p>Photography by Liam McColgan</p>
-    <p>@mcc.png on Instagram</p>
-  </section>
- 
-  <section id="slideshow" class="slideshow" aria-label="Featured photos">
-    <img src="assets/images/front_page/photo1.jpg" alt="Featured photo 1" class="active" width="1600" height="1067" fetchpriority="high">
-    <img src="assets/images/front_page/photo2.jpg" alt="Featured photo 2" width="1600" height="1067">
-    <img src="assets/images/front_page/photo3.jpg" alt="Featured photo 3" width="1600" height="1067">
-  </section>
-</main>
- 
-<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Full-size image">
-  <button class="lb-close" aria-label="Close (Esc)">&times;</button>
-  <img alt="">
-</div>
- 
-<script src="scripts.js"></script>
- 
-
-  <footer>
-    <p>&copy; mcc.png</p>
+  <!-- Footer -->
+  <footer class="text-center text-white-50 py-5">
+    <div class="container">
+      <p class="mb-0">&copy; mcc.png</p>
+    </div>
   </footer>
 
+  <!-- Bootstrap JS bundle (needed for navbar toggler, etc.) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-Q4grqf5F4j4fVqkK3J8B44B0xgCIXFuvY8VY5dS6fT2m2R3k4cn3m5n0pHc1v1x0"
+          crossorigin="anonymous"></script>
+
+  <!-- Your scripts -->
   <script src="scripts.js"></script>
 </body>
 </html>
