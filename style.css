@@ -280,3 +280,26 @@ section{
 @media (prefers-reduced-motion: reduce){
   .slideshow img{ transition: none; }
 }
+
+/* Home slideshow frame option */
+.slideshow.framed {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  /* translucent border line for definition */
+  outline: 1px solid rgba(255,255,255,0.18);
+  outline-offset: -1px; /* keep line snug against the edge */
+}
+
+/* Slight inner border on images so bright photos still feel contained */
+.slideshow.framed img {
+  border-radius: var(--radius);
+  border: 2px solid rgba(255,255,255,0.1);
+}
+/* Only the currently-visible slide should be clickable */
+.slideshow img { pointer-events: none; }
+.slideshow img.active { pointer-events: auto; }
+
+/* Disable zoom-in cursor just for the Home slideshow */
+#slideshow img {
+  cursor: default !important;
+}

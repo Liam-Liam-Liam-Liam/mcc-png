@@ -88,16 +88,17 @@ document.addEventListener('DOMContentLoaded', () => {
     show(i);
     start();
 
-    // clicking any image opens lightbox
-    slides.forEach((img, idx) => {
-      img.addEventListener('click', () => {
-        i = idx;
-        show(i);
-        openLightbox(img.src, img.alt);
-        // pause while the lightbox is open
-        stop();
-      });
-    });
+// clicking any image opens lightbox
+slides.forEach((img, idx) => {
+  img.addEventListener('click', () => {
+    i = idx;
+    show(i);
+    const full = img.dataset.full || img.src; // use full-res if provided
+    openLightbox(full, img.alt);
+    stop(); // pause while open
+  });
+});
+
 
     // resume slideshow when lightbox closes
     document.addEventListener('keydown', (e) => {

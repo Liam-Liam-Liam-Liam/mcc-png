@@ -11,132 +11,83 @@
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
         crossorigin="anonymous">
 
-  <!-- Bootstrap Icons (for the camera logo) -->
+  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-  <!-- Your site styles -->
+  <!-- Site styles -->
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Minimal page-specific styles -->
-  <style>
-    /* Full-bleed rotating background */
-    .cover-bg {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      overflow: hidden;
-    }
-    .cover-bg img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 800ms ease;
-    }
-    .cover-bg img.active { opacity: 1; }
-
-    /* Dark overlay to keep text readable on any image */
-    .cover-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.45);
-      z-index: -1;
-    }
-
-    /* Cover layout polish */
-    .cover-container {
-      max-width: 42rem;
-    }
-    main.cover {
-      padding: 2rem 1rem;
-    }
-    @media (min-width: 992px) {
-      main.cover { padding: 4rem 1rem; }
-    }
-
-    /* Drop shadow for title */
-    .cover h1, .cover p.lead {
-      text-shadow: 3px 2px 2px rgba(0,0,0,0.8);
-    }
-
-    /* Custom nav button style */
-    .nav-button {
-      background: #fff;
-      color: #000 !important;
-      border-radius: 999px;
-      padding: 8px 16px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-    .nav-button:hover {
-      background: #eaeaea;
-      transform: translateY(-2px);
-    }
-  </style>
 </head>
-<body class="d-flex h-100 text-center text-white">
+<body>
 
-  <!-- Rotating full-screen background -->
-  <div id="cover-bg" class="cover-bg" aria-hidden="true">
-    <img src="assets/images/front_page/photo1.jpg" alt="" class="active" fetchpriority="high">
-    <img src="assets/images/front_page/photo2.jpg" alt="">
-    <img src="assets/images/front_page/photo3.jpg" alt="">
-  </div>
-  <div class="cover-overlay" aria-hidden="true"></div>
-
-  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <!-- Top nav -->
-    <header class="mb-auto">
-      <div class="d-flex align-items-center justify-content-between">
-        <a class="navbar-brand fw-semibold d-flex align-items-center gap-2 text-white text-decoration-none" href="index.html">
-          <i class="bi bi-camera"></i>
-          mcc.png
-        </a>
-        <nav class="d-flex gap-2">
-          <a href="gallery.html" class="nav-button">Gallery</a>
-          <a href="about.html" class="nav-button">About</a>
-        </nav>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark" style="background: transparent;">
+    <div class="container">
+      <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="index.html">
+        <i class="bi bi-camera"></i>
+        mcc.png
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMain" aria-controls="navbarsMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
       </div>
-    </header>
+    </div>
+  </nav>
 
-    <main class="cover d-flex flex-column justify-content-center flex-grow-1">
-      <h1 class="display-4 fw-bold">mcc.png</mcc></mcc></h1>
-      <p class="lead">
-         Photos by Liam McColgan
+  <main>
+    <!-- Header -->
+    <section id="header" class="text-center">
+      <h1 class="fw-bold">mcc.png</h1>
+      <h2 class="fw-normal text-white-50">Sports Photography by Liam McColgan</h2>
+    </section>
+
+    <!-- Centered slideshow with subtle frame -->
+    <section class="my-4">
+      <!-- Use id="slideshow" for scripts.js to auto-init the home carousel -->
+      <div id="slideshow" class="slideshow framed" data-interval="5000" aria-label="Featured photos">
+        <img src="assets/images/front_page/photo1.jpg" alt="Featured photo 1" class="active" loading="eager" fetchpriority="high">
+        <img src="assets/images/front_page/photo2.jpg" alt="Featured photo 2" loading="lazy">
+        <img src="assets/images/front_page/photo3.jpg" alt="Featured photo 3" loading="lazy">
+      </div>
+    </section>
+
+    <!-- Optional: intro blurb -->
+    <section class="text-center">
+      <p class="text-white-50 mx-auto" style="max-width: 700px;">
+        Highlights from recent shoots.
       </p>
-      
-      
-    </main>
+    </section>
+  </main>
+
+  <!-- Shared lightbox (scripts.js already knows how to use this) -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Full-size image">
+    <button class="lb-close" aria-label="Close (Esc)">&times;</button>
+    <img alt="">
+  </div>
+
+  <footer class="text-center text-white-50 py-5">
+    <div class="container">
+      <p class="mb-0">&copy; mcc.png</p>
+    </div>
+  </footer>
+  
+  <!-- Shared lightbox -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Full-size image">
+    <button class="lb-close" aria-label="Close (Esc)">&times;</button>
+    <img alt="">
+  </div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-Q4grqf5F4j4fVqkK3J8B44B0xgCIXFuvY8VY5dS6fT2m2R3k4cn3m5n0pHc1v1x0"
           crossorigin="anonymous"></script>
 
-  <!-- Your site scripts -->
+  <!-- Your site scripts (slideshow + lightbox) -->
   <script src="scripts.js"></script>
-
-  <!-- Tiny background-rotation script -->
-  <script>
-    (function(){
-      const box = document.getElementById('cover-bg');
-      if (!box) return;
-      const imgs = Array.from(box.querySelectorAll('img'));
-      if (imgs.length < 2) return;
-
-      let i = imgs.findIndex(img => img.classList.contains('active'));
-      if (i < 0) i = 0;
-
-      const INTERVAL_MS = 5000;
-      setInterval(() => {
-        imgs[i].classList.remove('active');
-        i = (i + 1) % imgs.length;
-        imgs[i].classList.add('active');
-      }, INTERVAL_MS);
-    })();
-  </script>
 </body>
 </html>
