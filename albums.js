@@ -25,7 +25,7 @@ window.ALBUMS = [
 
   },
   {
-    title: "Douvris Karate Photos ",
+    title: "Douvris Karate",
     href: "album_douvris_karate.html",
     coverId: "1tNA5ZxiiPW8HGhpuTv-ZWq78xM0QQM3J",
   }
