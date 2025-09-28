@@ -420,3 +420,11 @@ section{
 .related-album:hover .fw-semibold {
   text-decoration: underline;
 }
+/* ===============================
+   Gallery: square Drive thumbs
+   =============================== */
+@media (max-width: 991.98px) {
+  #related-albums {
+    display: none;
+  }
+}
