@@ -57,7 +57,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-10">
           <p class="text-white">
-            My name is Liam. I am an amateur photographer based in Ottawa. Please enjoy this static website of my work. 
+            Hello! My name is Liam, and I am an amateur photographer based in Ottawa. This site is a collection of my work, with a focus on capturing sports. 
           </p>
         </div>
       </div>
@@ -117,16 +117,16 @@
   </section>
 
   <!-- Centered framed image BELOW (Drive-hosted) -->
-  <section class="my-4">
-    <div class="slideshow framed about-hero" aria-label="About photo">
-      <img
-  src="https://lh3.googleusercontent.com/d/15vlF2RHky1gFo319faINvAn001y8jNM1=s2048"
-        alt="About photo"
-        referrerpolicy="no-referrer"
-      />
-    </div>
-  </section>
-  
+<!-- Centered framed image BELOW (Drive-hosted) -->
+<!-- Centered framed image (Drive-hosted, with fallback) -->
+<section class="my-4">
+  <div class="slideshow framed about-hero" aria-label="About photo">
+    <!-- IMPORTANT: keep class="active" so it’s visible with your slideshow CSS -->
+    <img id="about-cover" class="active" alt="About photo">
+  </div>
+</section>
+
+
 </main>
 
 
@@ -144,5 +144,25 @@
 
   <!-- Your site scripts (optional here; About doesn’t need slideshow JS) -->
   <script src="scripts.js"></script>
+
+  <script>
+(function(){
+  const FILE_ID = "10rNpua0rRv17-BtE54TBSZXeAMXwD733"; // your new Drive file
+  const uc  = id => `https://drive.google.com/uc?export=view&id=${id}`;
+  const lhg = id => `https://lh3.googleusercontent.com/d/${id}=s2048`;
+
+  const img = document.getElementById('about-cover');
+  if (!img) return;
+
+  img.loading = 'eager';
+  img.fetchPriority = 'high';
+  img.referrerPolicy = 'no-referrer';
+
+  // Try uc first, then fall back to lh3 if it fails (403/404/rate limit, etc.)
+  img.src = uc(FILE_ID);
+  img.onerror = () => { img.onerror = null; img.src = lhg(FILE_ID); };
+})();
+</script>
+
 </body>
 </html>

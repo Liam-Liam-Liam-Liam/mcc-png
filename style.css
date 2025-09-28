@@ -25,8 +25,11 @@ body{
   font-family:"Times New Roman", Times, serif;
   color:var(--text);
   background:linear-gradient(var(--bg-1), var(--bg-2), var(--bg-1));
+  background-attachment: fixed;   /* ✅ keeps gradient in place */
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* simple focus ring */
@@ -302,4 +305,118 @@ section{
 /* Disable zoom-in cursor just for the Home slideshow */
 #slideshow img {
   cursor: default !important;
+}
+
+/* ===============================
+   case-study / scattered album grid
+   =============================== */
+.case-images{
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0,1fr));
+  gap: 1.5rem;
+}
+
+.case-image{
+  grid-column: span 12;                /* default: full width */
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  background: #111;
+  cursor: zoom-in;
+}
+.case-image img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (min-width: 992px){
+  .case-image.half{ grid-column: span 6; }  /* two-up on large screens */
+}
+
+/* ===============================
+   sub-nav buttons under album header
+   =============================== */
+
+.album-subnav{
+  display:flex;
+  justify-content:center;
+  gap:.5rem;
+  flex-wrap:wrap;
+  padding:.75rem 1rem 1.25rem;
+  color: #686868;
+}
+
+.album-btn:hover{ 
+  transform:translateY(-1px);
+  color: #ffffff;
+} 
+
+/* ===============================
+   Gallery: square Drive thumbs
+   =============================== */
+
+.gallery-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.album-card{
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.album-thumb{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;                  
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  background: #111;
+}
+.album-thumb img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--t-fast) var(--ease), opacity var(--t-fast) var(--ease);
+}
+.album-card:hover .album-thumb img{
+  transform: scale(1.02);
+}
+
+.album-meta{
+  text-align: center;
+  margin-top: .5rem;
+}
+.album-title{
+  font-weight: 600;
+}
+.album-count{
+  color: var(--text-dim);
+  font-size: .95rem;
+}
+
+/* ===============================
+   Gallery: square Drive thumbs
+   =============================== */
+
+.related-album { color: inherit; }
+.related-thumb {
+  width: 80px;   
+  height: 80px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  background: #111;
+}
+.related-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.related-album:hover .fw-semibold {
+  text-decoration: underline;
 }

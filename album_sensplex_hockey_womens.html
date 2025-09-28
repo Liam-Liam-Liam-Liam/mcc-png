@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sensplex Women's Hockey — mcc.png</title>
+
+  <!-- Bootstrap + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Your site styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Case-study layout (matches the Sonos-inspired template) */
+    .case-wrap { max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
+    .case-meta { position: sticky; top: 2rem; align-self: start; }
+    .case-meta h1 { margin-bottom: .25rem; }
+    .meta-label { color: var(--text-dim); text-transform: uppercase; letter-spacing: .06em; font-size: .8rem; }
+    .case-images { display: grid; gap: 2rem; }
+    .case-image {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      cursor: zoom-in;
+      background: #111;
+    }
+    .case-image img { width: 100%; height: auto; display: block; }
+    .case-caption { color: var(--text-dim); font-size: .95rem; margin-top: .35rem; text-align: center; }
+    .case-pad { padding-top: 1.5rem; padding-bottom: 3rem; }
+    @media (max-width: 991.98px) { .case-meta { position: static; margin-bottom: 1.25rem; } }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark" style="background: transparent;">
+    <div class="container">
+      <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="index.html">
+        <i class="bi bi-camera"></i> mcc.png
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMain" aria-controls="navbarsMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<main class="case-wrap case-pad">
+    <div class="row g-4">
+      <!-- Left Side -->
+      <aside class="col-lg-4">
+        <div class="case-meta">
+          <h1 class="fw-bold">Sensplex Women's Hockey</h1>
+                <p class="mb-0">&copy; mcc.png</p>
+
+          <div class="mb-3">
+            <br><div class="meta-label">Location</div>
+            <p class="mb-2">Richcraft Sensplex, Ottawa, ON</p> 
+          </div>
+          <div class="mb-3">
+            <div class="meta-label">Taken On</div>
+            <p class="mb-2">June 2024</p> 
+          </div>
+          <!-- Related albums (thumbnails) -->
+          <div id="related-albums" class="mt-4"></div>
+        </div>
+ 
+      </aside>
+
+      <!-- Right: images (auto-rendered from Drive IDs) -->
+      <section class="col-lg-8">
+        <div class="case-images" id="case-images"></div>
+      </section>
+    </div>
+  </main>
+
+   <!-- Shared lightbox for image viewing -->
+
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Full-size image">
+    <button class="lb-close" aria-label="Close (Esc)">&times;</button>
+    <img alt="">
+  </div>
+
+  <footer class="text-center text-white-50 py-5">
+    <div class="container">
+      <p class="mb-0">&copy; mcc.png</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="scripts.js"></script>
+
+  <!-- Shared album data -->
+  <script src="albums.js"></script>
+
+  <!-- Sidebar: related albums -->
+  <script>
+    const uc = id => `https://drive.google.com/uc?export=view&id=${id}`;
+    const gusercontent = id => `https://lh3.googleusercontent.com/d/${id}=s256`;
+
+    (function(){
+      const holder = document.getElementById('related-albums');
+      if (!holder || !window.ALBUMS) return;
+
+      window.ALBUMS.forEach(a => {
+        // Skip current album
+        if (location.pathname.endsWith(a.href)) return;
+
+        const link = document.createElement('a');
+        link.href = a.href;
+        link.className = 'related-album d-flex align-items-center mb-3 text-decoration-none';
+
+        const thumb = document.createElement('div');
+        thumb.className = 'related-thumb flex-shrink-0 me-2';
+
+        const img = document.createElement('img');
+        img.alt = a.title + " cover";
+        img.src = uc(a.coverId);
+        img.referrerPolicy = 'no-referrer';
+        img.onerror = () => { img.onerror = null; img.src = gusercontent(a.coverId); };
+        thumb.appendChild(img);
+
+        const meta = document.createElement('div');
+        meta.innerHTML = `
+          <div class="fw-semibold">${a.title}</div>
+        `;
+
+        link.appendChild(thumb);
+        link.appendChild(meta);
+        holder.appendChild(link);
+      });
+    })();
+  </script>
+
+  <!-- Page-local: render Drive images + lightbox open -->
+ <script>
+  const FILE_IDS = [
+"1uaXnDqY85-TtJ6PTMgoQFZoIMFeB7eUy",
+"1c2r7CCnokiV1JnhoDvutR55uGzWgprn3",
+"14lQ0mXMBp44ElmpXeMIToHpD2UWaSHr1",
+"1SeMp6q3X4eV42k5xxKo_aFvOx_FXpZG0",
+"1gd4PoBUrQwGGU0p8psvmpGfvygKiRuWr",
+"1HiHoINCIBPwTG-7wBHRPyVKG-MkiwUOG",
+"1sN0GjAVwJTzkbvthwoJbN5C5ObM4ZH8e",
+"1xlWREZhL4fzZR6lVL3Np0Kc9jEQpEAjv",
+"1v0XXzh2rbWshK8xyp_h-a_R7PZNJd_mO",
+"1M5d23SunLEAqagiiCwMPDdH_QpOJd-l9",
+"1agX0EriNFQfjyqbCpOa7uS-fcuT9ha5x"
+  ];
+
+  // Helpers
+    const ucImg = id => `https://drive.google.com/uc?export=view&id=${id}`;
+    const gusercontentImg = id => `https://lh3.googleusercontent.com/d/${id}=s2048`;
+
+    (function(){
+      const holder = document.getElementById('case-images');
+      if (!holder) return;
+      
+      FILE_IDS.forEach((id, idx) => {
+        const figure = document.createElement('figure');
+        figure.className = 'case-image';
+
+        const img = document.createElement('img');
+        img.loading = idx === 0 ? 'eager' : 'lazy';
+        img.fetchPriority = idx === 0 ? 'high' : 'auto';
+        img.alt = `Rowing photo ${idx + 1}`;
+
+        // Display src
+        img.src = ucImg(id);
+        img.referrerPolicy = 'no-referrer';
+
+        // Fallback if uc link fails
+        img.onerror = () => {
+          img.onerror = null;
+          img.src = gusercontentImg(id);
+        };
+
+        img.dataset.full = gusercontentImg(id);
+
+        // Lightbox handler
+        img.addEventListener('click', () => {
+          const lb = document.getElementById('lightbox');
+          const lbImg = lb?.querySelector('img');
+          const lbClose = lb?.querySelector('.lb-close');
+          if (!lb || !lbImg) return;
+
+          lbImg.src = img.dataset.full || img.src;
+          lbImg.alt = img.alt || '';
+          lb.classList.add('open');
+          lb.setAttribute('aria-hidden', 'false');
+          lbClose?.focus();
+
+          const onKey = (e) => { if (e.key === 'Escape') cleanup(); };
+          const cleanup = () => {
+            lb.classList.remove('open');
+            lb.setAttribute('aria-hidden', 'true');
+            lbImg.removeAttribute('src');
+            lbImg.removeAttribute('alt');
+            document.removeEventListener('keydown', onKey);
+          };
+          document.addEventListener('keydown', onKey);
+          lb.addEventListener('click', (e) => { if (e.target === lb) cleanup(); }, { once: true });
+          lbClose?.addEventListener('click', cleanup, { once: true });
+        });
+
+        figure.appendChild(img);
+        holder.appendChild(figure);
+      });
+    })();
+  </script>
+</body>
+</html>
