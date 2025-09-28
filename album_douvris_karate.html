@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ottawa Titans — mcc.png</title>
+  <title>Douvris Karate — mcc.png</title>
 
   <!-- Bootstrap + Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-  <!-- Site Styles -->
+  <!-- Your site styles -->
   <link rel="stylesheet" href="style.css" />
 
   <style>
-    /* Case-study layout (matches the Sonos-inspired template) */
+    /* Case-study layout */
     .case-wrap { max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
     .case-meta { position: sticky; top: 2rem; align-self: start; }
     .case-meta h1 { margin-bottom: .25rem; }
@@ -35,6 +35,7 @@
 <body>
 
   <!-- Navbar -->
+
   <nav class="navbar navbar-expand-md navbar-dark" style="background: transparent;">
     <div class="container">
       <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="index.html">
@@ -53,28 +54,29 @@
     </div>
   </nav>
 
- <main class="case-wrap case-pad">
+  <main class="case-wrap case-pad">
     <div class="row g-4">
       <!-- Left Side -->
       <aside class="col-lg-4">
         <div class="case-meta">
-          <h1 class="fw-bold">Ottawa Titans</h1>
+          <h1 class="fw-bold">Douvris Karate</h1>
                 <p class="mb-0">&copy; mcc.png</p>
 
           <div class="mb-3">
             <br><div class="meta-label">Location</div>
-            <p class="mb-2">Ottawa Stadium, Ottawa, ON</p> 
+            <p class="mb-2">Douvris Martial Arts, Ottawa, ON</p> 
           </div>
           <div class="mb-3">
             <div class="meta-label">Taken On</div>
-            <p class="mb-2">July 2025</p> 
+            <p class="mb-2">March 2025</p> 
           </div>
-
 
           <!-- Related albums (thumbnails) -->
           <div id="related-albums" class="mt-4"></div>
         </div>
+            <div class="container">
 
+    </div>
       </aside>
 
       <!-- Right: images (auto-rendered from Drive IDs) -->
@@ -84,7 +86,7 @@
     </div>
   </main>
 
-   <!-- Shared lightbox for image viewing -->
+  <!-- Shared lightbox for image viewing -->
 
   <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Full-size image">
     <button class="lb-close" aria-label="Close (Esc)">&times;</button>
@@ -143,19 +145,17 @@
   </script>
 
   <!-- Page-local: render Drive images + lightbox open -->
- <script>
-  const FILE_IDS = [
-    "17wXXb4eOsbNPbsC6bhNDbSKmcc8F0M6h",
-    "1Zhc_3DQaRl3WQ8uO0mAWjoqiqgk7ibUI",
-    "1olWcwisfFDrFzvQ9Tc-w-6g9FFudzvBS",
-    "1AC0-OxNc2ewsBHN_c_t9uJg5-rA10GtZ",
-    "1PGM_T9rdeTBcbDxaPDmsfDk-3qzD1Jv1",
-    "1lZrS3d030qWlPRluFAxFxnfrGHeOi12C",
-    "1sN2iaKJgHBcmbqLs2HqDhblXfhU2TVW0",
-    "1P4TYtFFqPglpMWRMoSZvg3jB0xIp_GOU",
-    "1ESh4p9E3yt_R-smQPXV6sfrs3ejI4chQ",
-    "1VOKH9lMQjisuucyqdsWBgPSCIyzPrlSa"
-  ];
+  <script>
+    const FILE_IDS = [ 
+        "1PnoMbuuOv-QUT5fDT9m_lAw48uRJb83X",
+        "15SIe06rVjpyBGGcTeYe9XxjDgE4xKwFZ",
+        "1eVltzJ1G081bspoaozFwFQHDxmv7nAby",
+        "1FGpGFTIIhMkoNfxGVkLvkiqHwEisNZWw",
+        "1tNA5ZxiiPW8HGhpuTv-ZWq78xM0QQM3J",
+        "1DSb3bRAOO9JVv5DA6YtSSU8xkAl1Edqc",
+        "11Cf0zDpgDJmi7q3eJapwwg0zvNQ9tLsP",
+        "1DlzwN0_LaEJEgrrNgQOkHhuOmCrc6qmw"
+    ];
 
     // Helpers
     const ucImg = id => `https://drive.google.com/uc?export=view&id=${id}`;
@@ -172,7 +172,7 @@
         const img = document.createElement('img');
         img.loading = idx === 0 ? 'eager' : 'lazy';
         img.fetchPriority = idx === 0 ? 'high' : 'auto';
-        img.alt = `Titans photo ${idx + 1}`;
+        img.alt = `Karate Photo ${idx + 1}`;
 
         // Display src
         img.src = ucImg(id);

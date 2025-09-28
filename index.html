@@ -8,7 +8,6 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
         rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
         crossorigin="anonymous">
 
   <!-- Bootstrap Icons -->
@@ -41,23 +40,28 @@
 
   <main>
     <!-- Header -->
-      <section id="header" class="text-center">
-        <h1 class="fw-bold">mcc.png</h1>
-        <h2 class="fw-normal text-white-50">Photography by Liam McColgan</h2>
+    <section id="header" class="text-center">
+      <h1 class="fw-bold">mcc.png</h1>
+      <h2 class="fw-normal text-white-50">Sports Photography by Liam McColgan</h2>
 
-
-    <!-- Centered slideshow with subtle frame -->
-    <section class="my-4">
-      <!-- Use id="slideshow" for scripts.js to auto-init the home carousel -->
-      <div id="slideshow" class="slideshow framed" data-interval="5000" aria-label="Featured photos">
-        <img src="assets/images/front_page/photo1.jpg" alt="Featured photo 1" class="active" loading="eager" fetchpriority="high">
-        <img src="assets/images/front_page/photo2.jpg" alt="Featured photo 2" loading="lazy">
-        <img src="assets/images/front_page/photo3.jpg" alt="Featured photo 3" loading="lazy">
+      <!-- Go to Gallery button -->
+      <div class="mt-3">
+      <a href="gallery.html" class="btn btn-outline-light   shadow-sm px-4">
+      <i class="bi bi-images me-2"></i> Go to Gallery
+      </a>  
       </div>
     </section>
- 
 
-  <!-- Shared lightbox (scripts.js already knows how to use this) -->
+    <!-- Centered slideshow (images injected from Drive IDs) -->
+    <section class="my-4">
+      <!-- Keep id="slideshow" so scripts.js can auto-rotate the slides -->
+      <div id="slideshow" class="slideshow framed" data-interval="5000" aria-label="Featured photos">
+        <!-- JS below will insert <img> elements here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- (Optional) Shared lightbox — Home keeps images non-clickable by your CSS -->
   <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Full-size image">
     <button class="lb-close" aria-label="Close (Esc)">&times;</button>
     <img alt="">
@@ -68,19 +72,48 @@
       <p class="mb-0">&copy; mcc.png</p>
     </div>
   </footer>
-  
-  <!-- Shared lightbox -->
-  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Full-size image">
-    <button class="lb-close" aria-label="Close (Esc)">&times;</button>
-    <img alt="">
-  </div>
+
+  <!-- Build Home slides from Google Drive IDs (with uc → lh3 fallback) -->
+  <script>
+    // ✅ Add/update your Drive FILE IDs here (order controls the rotation order)
+    const HOME_IDS = [
+      // Examples — replace with your real IDs:
+      "1lZrS3d030qWlPRluFAxFxnfrGHeOi12C",
+      "1PnoMbuuOv-QUT5fDT9m_lAw48uRJb83X",
+      "1AWj3krVaXYo-_9ML6LcN7CTbIbvxwnx9",
+      "1LyNZV1reKvuAgx_96TVSno2gk4m619b6"
+    ];
+
+    // Drive helpers
+    const uc  = id => `https://drive.google.com/uc?export=view&id=${id}`;
+    const lhg = id => `https://lh3.googleusercontent.com/d/${id}=s2048`;
+
+    (function buildHomeSlides(){
+      const box = document.getElementById('slideshow');
+      if (!box || !HOME_IDS.length) return;
+
+      HOME_IDS.forEach((id, idx) => {
+        const img = document.createElement('img');
+        if (idx === 0) img.classList.add('active'); // first slide visible
+        img.alt = `Featured photo ${idx + 1}`;
+        img.loading = idx === 0 ? 'eager' : 'lazy';
+        img.fetchPriority = idx === 0 ? 'high' : 'auto';
+        img.referrerPolicy = 'no-referrer';
+
+        // Try uc first; fall back to lh3 if Drive blocks it (403/404/rate limit)
+        img.src = uc(id);
+        img.onerror = () => { img.onerror = null; img.src = lhg(id); };
+
+        box.appendChild(img);
+      });
+    })();
+  </script>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-Q4grqf5F4j4fVqkK3J8B44B0xgCIXFuvY8VY5dS6fT2m2R3k4cn3m5n0pHc1v1x0"
           crossorigin="anonymous"></script>
 
-  <!-- Your site scripts (slideshow + lightbox) -->
+  <!-- Your site scripts (slideshow rotation + lightbox) -->
   <script src="scripts.js"></script>
 </body>
 </html>

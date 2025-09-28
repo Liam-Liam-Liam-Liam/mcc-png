@@ -23,5 +23,10 @@ window.ALBUMS = [
     href: "album_sensplex_hockey_womens.html",
     coverId: "1v0XXzh2rbWshK8xyp_h-a_R7PZNJd_mO",
 
+  },
+  {
+    title: "Douvris Karate Photos ",
+    href: "album_douvris_karate.html",
+    coverId: "1tNA5ZxiiPW8HGhpuTv-ZWq78xM0QQM3J",
   }
 ];
