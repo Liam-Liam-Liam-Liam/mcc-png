@@ -38,9 +38,13 @@
   <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="index.html">
-        <i class="bi bi-camera"></i> mcc.png
-      </a>
-      <div id="nav-album-title" class="nav-album-title d-md-none" aria-hidden="true"></div>
+  <i class="bi bi-camera"></i>
+  <span class="navbar-brand-text">mcc.png</span>
+</a>
+
+<!-- Centered album title (mobile only) -->
+<div id="nav-album-title" class="nav-album-title d-md-none" aria-hidden="true"></div>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMain" aria-controls="navbarsMain" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -54,7 +58,7 @@
     </div>
   </nav>
 
- <main class="case-wrap case-pad">
+<main class="case-wrap case-pad">
     <div class="row g-4">
       <!-- Left Side -->
       <aside class="col-lg-4">
@@ -70,7 +74,6 @@
             <div class="meta-label">Taken On</div>
             <p class="mb-2">June 2024</p> 
           </div>
-
           <!-- Related albums (thumbnails) -->
           <div id="related-albums" class="mt-4"></div>
         </div>
@@ -83,7 +86,8 @@
       </section>
     </div>
   </main>
-<!-- Shared lightbox for image viewing -->
+
+   <!-- Shared lightbox for image viewing -->
 
   <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Full-size image">
     <button class="lb-close" aria-label="Close (Esc)">&times;</button>
@@ -158,9 +162,9 @@
 "1Sftk0bEbl7iYXE1mAIkpxrdJk0g20ebd",
 "1jozlP6HlTV4HXQSUw78Rx-4q0F2eaUgo",
 "11eIccR3xkgvJwAkMWZHVeH6S1BlKwH9J"
-
   ];
-    // Helpers
+
+  // Helpers
     const ucImg = id => `https://drive.google.com/uc?export=view&id=${id}`;
     const gusercontentImg = id => `https://lh3.googleusercontent.com/d/${id}=s2048`;
 
@@ -175,7 +179,7 @@
         const img = document.createElement('img');
         img.loading = idx === 0 ? 'eager' : 'lazy';
         img.fetchPriority = idx === 0 ? 'high' : 'auto';
-        img.alt = `Mens Hockey photo ${idx + 1}`;
+        img.alt = `Women's Hockey photo ${idx + 1}`;
 
         // Display src
         img.src = ucImg(id);
@@ -229,5 +233,6 @@
   }
 })();
 </script>
+
 </body>
 </html>
