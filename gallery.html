@@ -95,7 +95,7 @@
       window.ALBUMS.forEach((a, i) => {
         const card = document.createElement('a');
         card.className = 'album-card';
-        card.href = a.href;
+        card.href = a.href.startsWith('http') ? a.href : `./${a.href.replace(/^\.\//,'')}`;
         card.setAttribute('aria-label', a.title);
 
         const thumbWrap = document.createElement('div');
