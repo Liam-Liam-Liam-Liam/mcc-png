@@ -428,3 +428,41 @@ section{
     display: none;
   }
 }
+/* ===============================
+   Fixed navbar sizing + offset
+   =============================== */
+:root{
+  --nav-h: 72px;            /* height of navbar on desktop */
+}
+@media (max-width: 767.98px){
+  :root{ --nav-h: 64px; }   /* height of navbar on mobile */
+}
+
+/* add padding so content clears the fixed navbar */
+body{ padding-top: var(--nav-h); }
+
+/* translucent background + blur for the fixed navbar */
+.navbar.fixed-top{
+  background: rgba(0,0,0,.35);
+  backdrop-filter: saturate(160%) blur(8px);
+}
+
+/* ===============================
+   Album title in navbar (mobile)
+   =============================== */
+.nav-album-title{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  pointer-events: none;     /* allow toggler/links to be clickable */
+  display: none;            /* hidden by default */
+}
+
+@media (max-width: 767.98px){
+  .navbar-brand-text{ display: none; } /* hide "mcc.png" label */
+  .nav-album-title{ display: block; }  /* show album title in center */
+}

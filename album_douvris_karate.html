@@ -15,7 +15,7 @@
   <style>
     /* Case-study layout */
     .case-wrap { max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
-    .case-meta { position: sticky; top: 2rem; align-self: start; }
+    .case-meta { position: sticky;  top: calc(var(--nav-h) + 1rem);}
     .case-meta h1 { margin-bottom: .25rem; }
     .meta-label { color: var(--text-dim); text-transform: uppercase; letter-spacing: .06em; font-size: .8rem; }
     .case-images { display: grid; gap: 2rem; }
@@ -36,11 +36,12 @@
 
   <!-- Navbar -->
 
-  <nav class="navbar navbar-expand-md navbar-dark" style="background: transparent;">
+   <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="index.html">
         <i class="bi bi-camera"></i> mcc.png
       </a>
+      <div id="nav-album-title" class="nav-album-title d-md-none" aria-hidden="true"></div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMain" aria-controls="navbarsMain" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -217,5 +218,14 @@
       });
     })();
   </script>
+  <script>
+(function(){
+  const title = document.querySelector('.case-meta h1');
+  const holder = document.getElementById('nav-album-title');
+  if (title && holder) {
+    holder.textContent = title.textContent.trim();
+  }
+})();
+</script>
 </body>
 </html>

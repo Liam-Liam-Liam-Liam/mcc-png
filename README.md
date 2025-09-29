@@ -1,2 +1,2 @@
 # mcc-png
-Photo Repository for Website
+Photos for Website
