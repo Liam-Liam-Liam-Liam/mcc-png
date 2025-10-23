@@ -1,0 +1,7 @@
+So here is how you add a gallery/page to the website.
+
+1. Create a new HTML file titled album_XXX_XXX.HTML. Copy a currently existing HTML file and paste it in the new one.
+2. Change all the Titles/Descriptions in the new HTML file to match the content
+3. Grab all the files uploaded to the google drive, make sure they're shared, then grab the File IDs using an LLM and paste in the Page-local : render Drive images + Lightbox Open section
+4. Fill out the Albums.js file with the HTML title 
+
